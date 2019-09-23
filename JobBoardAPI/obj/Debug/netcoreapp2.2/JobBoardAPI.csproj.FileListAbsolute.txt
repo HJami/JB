@@ -1,0 +1,14 @@
+C:\Users\hjami\Documents\JB\jobboardapi\bin\Debug\netcoreapp2.2\JobBoardAPI.deps.json
+C:\Users\hjami\Documents\JB\jobboardapi\bin\Debug\netcoreapp2.2\JobBoardAPI.runtimeconfig.json
+C:\Users\hjami\Documents\JB\jobboardapi\bin\Debug\netcoreapp2.2\JobBoardAPI.runtimeconfig.dev.json
+C:\Users\hjami\Documents\JB\jobboardapi\bin\Debug\netcoreapp2.2\JobBoardAPI.dll
+C:\Users\hjami\Documents\JB\jobboardapi\bin\Debug\netcoreapp2.2\JobBoardAPI.pdb
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.csprojAssemblyReference.cache
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.csproj.CoreCompileInputs.cache
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.RazorAssemblyInfo.cache
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.RazorAssemblyInfo.cs
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.AssemblyInfoInputs.cache
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.AssemblyInfo.cs
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.RazorTargetAssemblyInfo.cache
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.dll
+C:\Users\hjami\Documents\JB\jobboardapi\obj\Debug\netcoreapp2.2\JobBoardAPI.pdb
