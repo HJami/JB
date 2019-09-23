@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-
-  web:
-    image: "Img_JobBoardAPI"
-    ports:
-      - "5000:5000"
-
