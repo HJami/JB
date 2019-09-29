@@ -5,7 +5,7 @@ using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace JB.Services
+namespace JB.services
 {
     
     public interface IJobService
@@ -15,9 +15,11 @@ namespace JB.Services
     
     public class JobService: IJobService
     {
-        public JobService()
+        
+        public JobBoardStoreService JobBoardStoreService { get; set; }
+        public JobService(JobBoardStoreService _jobBoardStoreService)
         {
-            
+            JobBoardStoreService = _jobBoardStoreService;
         }
 
         public List<Job> GetCSVPayload(string csvJobs)
@@ -82,7 +84,13 @@ namespace JB.Services
                 //json = "[{\"Title\":\"Ahmad\", \"PostingDate\":\"2019-09-29\", \"Applicants\": [{\"Name\":\"Ali\"}]}]";
                 
                 JsonSerializer js = new JsonSerializer();
-                return js.Deserialize<List<Job>>(new JsonTextReader(new StringReader(json)));
+                var objs = js.Deserialize<List<Job>>(new JsonTextReader(new StringReader(json)));
+
+                foreach (var obj in objs)
+                {
+                    JobBoardStoreService.Create(obj);
+                }
+                return objs;
 
         }
     }
