@@ -3,7 +3,11 @@ version: "3"
 services:
 
   web:
-    image: "img_jbapi"
+    image: "aspnetapp1"
     ports:
       - "82:82"
 
+  db:
+    image: "mongo"
+    ports:
+      - "27017:27017"
