@@ -1,0 +1,14 @@
+JobBoardAPI/**/bin
+JobBoardAPI/**/obj
+JobBoardAPI/**/Release
+JobBoardAPI/**/Debug
+JobBoardAPI/**.suo
+JobBoardAPI/**.err
+JobBoardAPI/**.log
+JobBoardAPI/**.obj
+JobBoardAPI/**.bin
+JobBoardAPI/**.exe
+JobBoardAPI/**.user
+JobBoardAPI/**.pdb
+JobBoardAPI/**.licx
+JobBoardAPI/**.csproj.user
