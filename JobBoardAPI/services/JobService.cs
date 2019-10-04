@@ -10,7 +10,10 @@ namespace JB.services
 
     public interface IJobService
     {
-        List<Job> GetCSVPayload(string csvJobs);
+        IEnumerable<Job> GetCSVPayload(string csvJobs);
+        IEnumerable<JobView> GetJobs();
+        
+        Job GetJob(string id);
     }
 
     public class JobService : IJobService
@@ -22,7 +25,22 @@ namespace JB.services
             JobBoardStoreService = _jobBoardStoreService;
         }
 
-        public List<Job> GetCSVPayload(string csvJobs)
+        public IEnumerable<JobView> GetJobs()
+        {
+            return JobBoardStoreService.GetAll().
+                   ToList().
+                   Select((item) => 
+                              new JobView {Title = item.Title, 
+                                           Description = item.Description, 
+                                           Location = item.Location});
+        }
+
+        public Job GetJob(string id)
+        {
+            return JobBoardStoreService.Get(id);
+        }
+
+        public IEnumerable<Job> GetCSVPayload(string csvJobs)
         {
             var lines = csvJobs.TrimEnd().Split('\n').ToList();
             var titles = new List<string> { "Title", "Description", "PostingDate", "Location", "Applicants" }; //lines[0].Split(',').ToList();

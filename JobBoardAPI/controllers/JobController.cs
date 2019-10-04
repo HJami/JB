@@ -4,6 +4,8 @@ using JB.services;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
+using JB.models;
+using System.Linq;
 
 namespace JB.Controller
 
@@ -21,12 +23,19 @@ namespace JB.Controller
     [HttpGet]
     [Route("Job/GetJobs")]
     
-    public List<string> GetJobs()
+    public IEnumerable<JobView> GetJobs()
     {
-        return new List<string> {"Job1", "Job2"};
+        return JobService.GetJobs();
     }
 
+    [HttpGet]
+    [Route("Job/GetJob/{id}")]
     
+    public Job GetJob(string id)
+    {
+        return JobService.GetJob(id);
+    }
+
     [Route("Job/ParseCSVJobs")]
     [HttpPost]
     public ActionResult ParseJobList()

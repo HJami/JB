@@ -1,5 +1,7 @@
 using JB.models;
+using System.Linq;
 using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace JB.services
 {
@@ -20,5 +22,16 @@ namespace JB.services
             _jobs.InsertOne(job);
             return job;
         }
+
+        public List<Job> GetAll()
+        {
+            return _jobs.Find((job) => true).ToList();
+        }
+
+        public Job Get(string id)
+        {
+            return _jobs.Find((job) => job.Id == id).SingleOrDefault();
+        }
+
     }
 }

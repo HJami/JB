@@ -2,12 +2,18 @@ version: "3"
 
 services:
 
+  mongo:
+    image: "mongo"
+    container_name: "mongo"
+    ports:
+      - "27018:27017"
+
   web:
-    image: "aspnetapp1"
+    image: "img_jbapi"
+    container_name: "jbwebapi"
     ports:
       - "82:82"
-
-  db:
-    image: "mongo"
-    ports:
-      - "27017:27017"
+    environment:
+      MongoDB__Host: mongo      
+    depends_on:
+      - mongo      
