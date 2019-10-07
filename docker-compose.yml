@@ -7,6 +7,13 @@ services:
     container_name: "mongo"
     ports:
       - "27018:27017"
+    volumes:  
+      - E:\DB\Data:/data/db
+      - E:\DB\Config:/data/config
+
+  redis:
+    image: "redis"
+    container_name: "redis"
 
   web:
     image: "img_jbapi"
@@ -16,4 +23,4 @@ services:
     environment:
       MongoDB__Host: mongo      
     depends_on:
-      - mongo      
+      - mongo   

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace JB.services
 {
@@ -20,19 +21,37 @@ namespace JB.services
     {
 
         public JobBoardStoreService JobBoardStoreService { get; set; }
-        public JobService(JobBoardStoreService _jobBoardStoreService)
+        public RedisService RedisService { get; set; }
+        public JobService(JobBoardStoreService _jobBoardStoreService, RedisService _redisService)
         {
             JobBoardStoreService = _jobBoardStoreService;
+            RedisService = _redisService;
         }
 
         public IEnumerable<JobView> GetJobs()
         {
-            return JobBoardStoreService.GetAll().
-                   ToList().
-                   Select((item) => 
-                              new JobView {Title = item.Title, 
-                                           Description = item.Description, 
-                                           Location = item.Location});
+            var jr = new JsonSerializer();
+            if (RedisService.HasKey("*"))
+            {
+                return jr.Deserialize<List<JobView>>
+                          (new JsonTextReader(new StringReader(RedisService.ReadKey("*"))));
+            }
+            else
+            {
+                var jobViewList = 
+                  JobBoardStoreService.GetAll().
+                    ToList().
+                    Select((item) => 
+                                new JobView {Title = item.Title, 
+                                            Description = item.Description, 
+                                            Location = item.Location});
+                
+                var sb = new StringBuilder();
+                jr.Serialize(new JsonTextWriter(new StringWriter(sb)), jobViewList);
+                RedisService.WriteKey("*", sb.ToString());
+                
+                return jobViewList;                            
+            }
         }
 
         public Job GetJob(string id)

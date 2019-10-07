@@ -34,7 +34,14 @@ namespace JB
             services.AddSingleton<IJobBoardDatabaseSettings>(sp =>
                sp.GetRequiredService<IOptions<JobBoardDatabaseSettings>>().Value);
 
-            
+            services.Configure<RedisSettings>(
+                Configuration.GetSection(nameof(RedisSettings)));
+
+            services.AddSingleton<IRedisSettings>(sp =>
+               sp.GetRequiredService<IOptions<RedisSettings>>().Value);
+
+            services.AddSingleton<RedisService>();
+
             services.Add(new ServiceDescriptor
                            (typeof(IJobService), typeof(JobService), ServiceLifetime.Singleton));
 
