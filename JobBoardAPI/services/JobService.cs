@@ -136,6 +136,9 @@ namespace JB.services
             {
                 JobBoardStoreService.Create(obj);
             }
+
+            RedisService.WriteKey("*", json);
+
             return objs;
 
         }
