@@ -3,7 +3,8 @@ import Job from './Job.js'
 import './Job.css';
 
 class Jobs extends Component {
-    state = {
+
+    /*state = {
         jobs: [
             {
                 name: 'name1',
@@ -27,7 +28,19 @@ class Jobs extends Component {
             }
 
         ]
+    }*/
+
+    state = { jobs: [] };
+
+    componentDidMount() {
+        fetch('http://127.0.0.1:82/Job/GetJobs')
+            .then((res) => res.json())
+            .then((result) => {
+                this.setState({ jobs: result });
+                console.log(this.state);
+            });
     }
+
     render() {
         return (
             <div>
